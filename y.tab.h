@@ -49,23 +49,55 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    IDENTIFIER = 258,
-    CONSTANT = 259,
-    IF = 260,
-    ELSE = 261,
-    WHILE = 262,
-    FOR = 263,
-    RETURN = 264
+    INT = 258,
+    IDENTIFIER = 259,
+    CONSTANT = 260,
+    IF = 261,
+    ELSE = 262,
+    WHILE = 263,
+    FOR = 264,
+    RETURN = 265,
+    BREAK = 266,
+    CONTINUE = 267,
+    ADD_ASSIGN = 268,
+    SUB_ASSIGN = 269,
+    MUL_ASSIGN = 270,
+    DIV_ASSIGN = 271,
+    MOD_ASSIGN = 272,
+    INC_OP = 273,
+    DEC_OP = 274,
+    AND_OP = 275,
+    OR_OP = 276,
+    GE_OP = 277,
+    LE_OP = 278,
+    EQ_OP = 279,
+    NE_OP = 280
   };
 #endif
 /* Tokens.  */
-#define IDENTIFIER 258
-#define CONSTANT 259
-#define IF 260
-#define ELSE 261
-#define WHILE 262
-#define FOR 263
-#define RETURN 264
+#define INT 258
+#define IDENTIFIER 259
+#define CONSTANT 260
+#define IF 261
+#define ELSE 262
+#define WHILE 263
+#define FOR 264
+#define RETURN 265
+#define BREAK 266
+#define CONTINUE 267
+#define ADD_ASSIGN 268
+#define SUB_ASSIGN 269
+#define MUL_ASSIGN 270
+#define DIV_ASSIGN 271
+#define MOD_ASSIGN 272
+#define INC_OP 273
+#define DEC_OP 274
+#define AND_OP 275
+#define OR_OP 276
+#define GE_OP 277
+#define LE_OP 278
+#define EQ_OP 279
+#define NE_OP 280
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

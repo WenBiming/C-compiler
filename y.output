@@ -1,10 +1,26 @@
 Terminals unused in grammar
 
+    INT
     IF
     ELSE
     WHILE
     FOR
     RETURN
+    BREAK
+    CONTINUE
+    ADD_ASSIGN
+    SUB_ASSIGN
+    MUL_ASSIGN
+    DIV_ASSIGN
+    MOD_ASSIGN
+    INC_OP
+    DEC_OP
+    AND_OP
+    OR_OP
+    GE_OP
+    LE_OP
+    EQ_OP
+    NE_OP
 
 
 Grammar
@@ -23,23 +39,39 @@ Terminals, with rules where they appear
     $end (0) 0
     '\n' (10) 2
     error (256)
-    IDENTIFIER (258) 4
-    CONSTANT (259) 3
-    IF (260)
-    ELSE (261)
-    WHILE (262)
-    FOR (263)
-    RETURN (264)
+    INT (258)
+    IDENTIFIER (259) 4
+    CONSTANT (260) 3
+    IF (261)
+    ELSE (262)
+    WHILE (263)
+    FOR (264)
+    RETURN (265)
+    BREAK (266)
+    CONTINUE (267)
+    ADD_ASSIGN (268)
+    SUB_ASSIGN (269)
+    MUL_ASSIGN (270)
+    DIV_ASSIGN (271)
+    MOD_ASSIGN (272)
+    INC_OP (273)
+    DEC_OP (274)
+    AND_OP (275)
+    OR_OP (276)
+    GE_OP (277)
+    LE_OP (278)
+    EQ_OP (279)
+    NE_OP (280)
 
 
 Nonterminals, with rules where they appear
 
-    $accept (11)
+    $accept (27)
         on left: 0
-    start (12)
+    start (28)
         on left: 1 2
         on right: 0 2
-    E (13)
+    E (29)
         on left: 3 4
         on right: 2
 

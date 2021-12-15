@@ -1,7 +1,8 @@
 D			[0-9]
 L			[a-zA-Z_]
-H			[a-fA-F0-9]
 
+
+%option noyywrap nodefault yylineno
 %{
 #include "y.tab.h"
 #include <stdio.h>
@@ -16,73 +17,71 @@ int column = 0;
 %%
 "/*"			{ comment();/*注释*/}
 "//"[^\n]*      { /* consume //-comment */ }
-"int"   {return (INT);}
+"int"   {printf("%s\n", yytext);return (INT);}
 
-"break" {printf("%c\n", *yytext);return (BREAK);}     
-"continue"  {printf("%c\n", *yytext);return (CONTINUE);}
-"else"  {printf("%c\n", *yytext);return (ELSE);}
-"for"   {printf("%c\n", *yytext);return (FOR);}
-"if"    {printf("%c\n", *yytext);return (IF);}
-"return"    {printf("%c\n", *yytext);return (RETURN);}
-"while"     {printf("%c\n", *yytext);return (WHILE);}
+"break" {printf("%s\n", yytext);return (BREAK);}     
+"continue"  {printf("%s\n", yytext);return (CONTINUE);}
+"else"  {printf("%s\n", yytext);return (ELSE);}
+"for"   {printf("%s\n", yytext);return (FOR);}
+"if"    {printf("%s\n", yytext);return (IF);}
+"return"    {printf("%s\n", yytext);return (RETURN);}
+"while"     {printf("%s\n", yytext);return (WHILE);}
 
-{L}({L}|{D})*   {printf("%c\n", *yytext);return (IDENTIFIER);}
-[1-9]{D}*   {printf("%c\n", *yytext);return (CONSTANT);}
+{L}({L}|{D})*   {printf("%s\n", yytext);return (IDENTIFIER);}
+[1-9]{D}*   {printf("%s\n", yytext);return (CONSTANT);}
 
-"+="    {printf("%c\n", *yytext);return (ADD_ASSIGN);}
-"-="    {printf("%c\n", *yytext);return (SUB_ASSIGN);}
-"*="    {printf("%c\n", *yytext);return (MUL_ASSIGN);}
-"/="    {printf("%c\n", *yytext);return (DIV_ASSIGN);}
-"%="    {printf("%c\n", *yytext);return (MOD_ASSIGN);}
+"+="    {printf("%s\n", yytext);return (ADD_ASSIGN);}
+"-="    {printf("%s\n", yytext);return (SUB_ASSIGN);}
+"*="    {printf("%s\n", yytext);return (MUL_ASSIGN);}
+"/="    {printf("%s\n", yytext);return (DIV_ASSIGN);}
+"%="    {printf("%s\n", yytext);return (MOD_ASSIGN);}
 
-"++"    {printf("%c\n", *yytext);return (INC_OP);}
-"--"    {printf("%c\n", *yytext);return (DEC_OP);}
-"&&"    {printf("%c\n", *yytext);return (AND_OP);}
-"||"    {printf("%c\n", *yytext);return (OR_OP);}
-">="    {printf("%c\n", *yytext);return (GE_OP);}
-"<="    {printf("%c\n", *yytext);return (LE_OP);}
-"=="    {printf("%c\n", *yytext);return (EQ_OP);}
-"!="    {printf("%c\n", *yytext);return (NE_OP);}
+"++"    {printf("%s\n", yytext);return (INC_OP);}
+"--"    {printf("%s\n", yytext);return (DEC_OP);}
+"&&"    {printf("%s\n", yytext);return (AND_OP);}
+"||"    {printf("%s\n", yytext);return (OR_OP);}
+">="    {printf("%s\n", yytext);return (GE_OP);}
+"<="    {printf("%s\n", yytext);return (LE_OP);}
+"=="    {printf("%s\n", yytext);return (EQ_OP);}
+"!="    {printf("%s\n", yytext);return (NE_OP);}
 
-";"     {printf("%c\n", *yytext);return (';');}
-","     {printf("%c\n", *yytext);return (',');}
-":"     {printf("%c\n", *yytext);return (':');}
-"="     {printf("%c\n", *yytext);return ('=');}
-"["     {printf("%c\n", *yytext);return ('[');}
-"]"     {printf("%c\n", *yytext);return (']');}
-"."     {printf("%c\n", *yytext);return ('.');}
-"&"     {printf("%c\n", *yytext);return ('&');}
-"!"     {printf("%c\n", *yytext);return ('!');}
-"~"     {printf("%c\n", *yytext);return ('~');}
-"+"     {printf("%c\n", *yytext);return ('+');}
-"-"     {printf("%c\n", *yytext);return ('-');}
-"*"     {printf("%c\n", *yytext);return ('*');}
-"/"     {printf("%c\n", *yytext);return ('/');}
-"%"     {printf("%c\n", *yytext);return ('%');}
-"<"     {printf("%c\n", *yytext);return ('<');}
-">"     {printf("%c\n", *yytext);return ('>');}
-"^"     {printf("%c\n", *yytext);return ('^');}
-"|"     {printf("%c\n", *yytext);return ('|');}
-"?"     {printf("%c\n", *yytext);return ('?');}
-"{"     {printf("%c\n", *yytext);return ('{');}
-"}"     {printf("%c\n", *yytext);return ('}');}
-"("     {printf("%c\n", *yytext);return ('(');}
-")"     {printf("%c\n", *yytext);return (')');}
+";"     {printf("%s\n", yytext);return (';');}
+","     {printf("%s\n", yytext);return (',');}
+":"     {printf("%s\n", yytext);return (':');}
+"="     {printf("%s\n", yytext);return ('=');}
+"["     {printf("%s\n", yytext);return ('[');}
+"]"     {printf("%s\n", yytext);return (']');}
+"."     {printf("%s\n", yytext);return ('.');}
+"&"     {printf("%s\n", yytext);return ('&');}
+"!"     {printf("%s\n", yytext);return ('!');}
+"~"     {printf("%s\n", yytext);return ('~');}
+"+"     {printf("%s\n", yytext);return ('+');}
+"-"     {printf("%s\n", yytext);return ('-');}
+"*"     {printf("%s\n", yytext);return ('*');}
+"/"     {printf("%s\n", yytext);return ('/');}
+"%"     {printf("%s\n", yytext);return ('%');}
+"<"     {printf("%s\n", yytext);return ('<');}
+">"     {printf("%s\n", yytext);return ('>');}
+"^"     {printf("%s\n", yytext);return ('^');}
+"|"     {printf("%s\n", yytext);return ('|');}
+"?"     {printf("%s\n", yytext);return ('?');}
+"{"     {printf("%s\n", yytext);return ('{');}
+"}"     {printf("%s\n", yytext);return ('}');}
+"("     {printf("%s\n", yytext);return ('(');}
+")"     {printf("%s\n", yytext);return (')');}
 
 [\t\v\n\f]      {/*empty*/}
-.       {printf('Mystery characters\n');}
+.       {printf("Mystery characters\n");}
 
 %%
 
-int yywrap(void) { 
-    return 1;
-}
+
 
 void comment() {
 	column = 0;
 	char c, prev = 0;
 	
-	while (cin >> c)      /* (EOF maps to 0) */
+	while (std::cin >> c)      /* (EOF maps to 0) */
 	{
 		if (c == '/' && prev == '*')
 			return;
