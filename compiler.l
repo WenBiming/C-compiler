@@ -5,6 +5,7 @@ H			[a-fA-F0-9]
 %{
 #include "y.tab.h"
 #include <stdio.h>
+#include <iostream>
 void count(void);
 void comment();
 int check_type();
@@ -53,9 +54,39 @@ int column = 0;
 "&"     {printf("%c\n", *yytext);return ('&');}
 "!"     {printf("%c\n", *yytext);return ('!');}
 "~"     {printf("%c\n", *yytext);return ('~');}
+"+"     {printf("%c\n", *yytext);return ('+');}
+"-"     {printf("%c\n", *yytext);return ('-');}
+"*"     {printf("%c\n", *yytext);return ('*');}
+"/"     {printf("%c\n", *yytext);return ('/');}
+"%"     {printf("%c\n", *yytext);return ('%');}
+"<"     {printf("%c\n", *yytext);return ('<');}
+">"     {printf("%c\n", *yytext);return ('>');}
+"^"     {printf("%c\n", *yytext);return ('^');}
+"|"     {printf("%c\n", *yytext);return ('|');}
+"?"     {printf("%c\n", *yytext);return ('?');}
+"{"     {printf("%c\n", *yytext);return ('{');}
+"}"     {printf("%c\n", *yytext);return ('}');}
+"("     {printf("%c\n", *yytext);return ('(');}
+")"     {printf("%c\n", *yytext);return (')');}
+
+[\t\v\n\f]      {/*empty*/}
+.       {printf('Mystery characters\n');}
 
 %%
 
 int yywrap(void) { 
     return 1;
+}
+
+void comment() {
+	column = 0;
+	char c, prev = 0;
+	
+	while (cin >> c)      /* (EOF maps to 0) */
+	{
+		if (c == '/' && prev == '*')
+			return;
+		prev = c;
+	}
+	printf("unterminated comment");
 }
